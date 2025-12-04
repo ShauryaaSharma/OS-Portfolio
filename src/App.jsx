@@ -5,6 +5,7 @@ import Dock from "../components/Dock.jsx";
 import { terminal as TerminalWindow } from "./windows";
 import { safari as SafariWindow } from "./windows";
 import { resume as ResumeWindow } from "./windows";
+import { finder as FinderWindow } from "./windows";
 import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
 gsap.registerPlugin(Draggable);
@@ -19,6 +20,7 @@ const App = () => {
        <TerminalWindow />
        <SafariWindow />
        <ResumeWindow />
+       <FinderWindow />
     </main>
   )
 }
