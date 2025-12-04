@@ -304,6 +304,12 @@ body {
         @apply font-bold text-sm text-center flex-1;
       }
     }
+
+    .pdf-container {
+      @apply bg-gray-100;
+      width: 700px;
+      height: 600px;
+    }
   }
 
   #finder {
