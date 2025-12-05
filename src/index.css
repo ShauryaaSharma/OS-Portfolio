@@ -13,6 +13,14 @@ body {
   background-position: center;
 }
 
+:root[data-theme='dark'] body {
+  background-image: url("/images/dark-wallpaper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #020617;
+}
+
 @theme {
   --font-georama: "Georama", sans-serif;
   --font-roboto: "Roboto Mono", monospace;
@@ -116,6 +124,26 @@ body {
 
   #window-header {
     @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400 cursor-move;
+  }
+
+:root[data-theme='dark'] nav {
+    @apply bg-gray-900/70 text-white;
+  }
+
+  :root[data-theme='dark'] nav ul p {
+    @apply text-white;
+  }
+
+  :root[data-theme='dark'] nav time {
+    @apply text-white;
+  }
+
+  :root[data-theme='dark'] #window-header {
+    @apply bg-slate-900 border-slate-700 text-gray-200;
+  }
+
+  :root[data-theme='dark'] #dock .dock-container {
+    @apply bg-slate-900/70;
   }
 
   #safari {
@@ -266,14 +294,14 @@ body {
     }
 
     .gallery {
-      @apply p-5;
+      @apply p-5 h-full;
 
       ul {
-        @apply grid grid-cols-5 grid-rows-5 gap-2.5;
+        @apply grid grid-cols-5 grid-rows-5 gap-2.5 h-full;
 
         li {
           img {
-            @apply size-full object-cover rounded-lg;
+            @apply w-full h-full object-cover rounded-lg;
           }
 
           &:first-child {
