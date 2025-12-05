@@ -14,7 +14,7 @@ const contact = () => {
       <section className="bg-white p-6 space-y-8">
         <div className="flex items-center gap-4">
           <img
-            src="/images/adrian.jpg"
+            src="/images/gal1.png"
             alt="Profile"
             className="w-16 h-16 rounded-full object-cover"
           />
@@ -25,7 +25,7 @@ const contact = () => {
               Got an idea? A bug to squash? Or just wanna talk tech? I&apos;m in.
             </p>
             <p className="text-sm font-medium text-gray-800">
-              contact@jsmastery.pro
+              shauryasofficial27@gmail.com
             </p>
           </div>
         </div>
