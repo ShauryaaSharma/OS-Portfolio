@@ -10,13 +10,14 @@ import { locations } from '../../constants'
 const finder = () => {
 
     const { activeLocation, setActiveLocation } = useLocationStore();
-    const { openWindow } = useWindowStore();
+    const { openWindow, openImageWindow } = useWindowStore();
     
     const OpenItem = (item) => {
         if(item.fileType === "pdf") return openWindow("resume");
         if(item.kind === "folder") return setActiveLocation(item);
         if(["fig", "url"].includes(item.fileType) && item.href)
             return window.open(item.href, "_blank");
+        if(item.fileType === "img") return openImageWindow(item);
         openWindow(`${item.fileType}file`, item);
     }
     
@@ -30,6 +31,7 @@ const finder = () => {
                         onClick={() => setActiveLocation(item)}
                         className={clsx(
                             item.id === activeLocation.id ? "active" : "not-active",
+                            "cursor-pointer hover:opacity-80 transition-opacity"
                         )}
                     >
                         <img src={item.icon} className="w-4" alt={item.name} />
@@ -50,7 +52,7 @@ const finder = () => {
             <div className="bg-white flex h-full">
                 <div className="sidebar">
                     <div>
-                        <h3>Favorites</h3>
+                        <h3></h3>
                         {renderList("Favorites", Object.values(locations))}
                         {renderList("My Projects", locations.work.children)}
                     </div>
@@ -59,7 +61,16 @@ const finder = () => {
                 <div className="content">
                     <ul>
                         {activeLocation?.children?.map((item) => (
-                            <li key={item.id} className={item.position} onClick={() => OpenItem(item)}>
+                            <li
+                                key={item.id}
+                                className={`${item.position} cursor-pointer hover:opacity-80 transition-opacity`}
+                                onClick={(e) => {
+                                    // Prevent bubbling to the window wrapper so the newly opened
+                                    // file window keeps the highest z-index.
+                                    e.stopPropagation();
+                                    OpenItem(item);
+                                }}
+                            >
                                 <img src={item.icon} alt={item.name} />
                                 <p>{item.name}</p>
                             </li>

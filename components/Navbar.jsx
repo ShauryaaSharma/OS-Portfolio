@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { navIcons, navLinks } from '../constants'
 import dayjs from 'dayjs'
 import useWindowStore from '../src/store/window'
@@ -7,6 +7,21 @@ import useWindowStore from '../src/store/window'
 const Navbar = () => {
 
     const { openWindow } = useWindowStore();
+    const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        const stored = window.localStorage.getItem('theme');
+        const initial = stored === 'light' || stored === 'dark' ? stored : 'dark';
+        setTheme(initial);
+        document.documentElement.dataset.theme = initial;
+    }, []);
+
+    const toggleTheme = () => {
+        const next = theme === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        document.documentElement.dataset.theme = next;
+        window.localStorage.setItem('theme', next);
+    };
 
   return (
     <nav>
@@ -16,7 +31,7 @@ const Navbar = () => {
 
             <ul>
                 {navLinks.map(({ id, name, type }) => (
-                    <li key = {id} onClick={() => openWindow(type)}>
+                    <li key={id} onClick={() => openWindow(type)}>
                         <p>{name}</p>
                     </li>
                 ))}
@@ -25,8 +40,11 @@ const Navbar = () => {
         <div>
            <ul>
             {navIcons.map(({id, img}) => (
-                <li key={id}>
-                    <img src={img} className='icon-hover' alt={`icon-${id}`} />
+                <li
+                    key={id}
+                    onClick={id === 4 ? toggleTheme : undefined}
+                >
+                    <img src={img} className='icon-hover cursor-pointer' alt={`icon-${id}`} />
                 </li>
             ))}
            </ul>
