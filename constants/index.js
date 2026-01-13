@@ -110,11 +110,11 @@ const techStack = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "PHP"],
+    items: ["Node.js", "Express", "NestJS"],
   },
   {
-    category: "ML & DL",
-    items: ["Tensor Flow", "PyTorch", "Hugging Face"],
+    category: "AI/ML/DL",
+    items: ["N8N", "PyTorch", "Hugging Face", "OpenCV"],
   },
   {
     category: "Database",
