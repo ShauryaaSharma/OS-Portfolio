@@ -5,6 +5,7 @@ import useWindowStore from '../src/store/window'
 
 
 const Navbar = () => {
+    const baseUrl = import.meta.env.BASE_URL;
 
     const { openWindow } = useWindowStore();
     const [theme, setTheme] = useState('light');
@@ -26,7 +27,7 @@ const Navbar = () => {
   return (
     <nav>
         <div>
-            <img src="/images/logo.svg" alt="Logo" />
+            <img src={`${baseUrl}images/logo.svg`} alt="Logo" />
             <p className='font-bold'>Shaurya's Portfolio</p>
 
             <ul>

@@ -4,6 +4,8 @@ import WindowControls from '../../components/WindowControls'
 import { socials } from '../../constants'
 
 const contact = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <>
       <div id="window-header">
@@ -14,7 +16,7 @@ const contact = () => {
       <section className="bg-white p-6 space-y-8">
         <div className="flex items-center gap-4">
           <img
-            src="/images/gal1.png"
+            src={`${baseUrl}images/gal1.png`}
             alt="Profile"
             className="w-16 h-16 rounded-full object-cover"
           />

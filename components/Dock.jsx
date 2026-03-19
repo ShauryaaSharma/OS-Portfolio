@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import useWindowStore from '../src/store/window'
 
 const Dock = () => {
+    const baseUrl = import.meta.env.BASE_URL;
     const { openWindow, closeWindow, windows } = useWindowStore();
     const dockRef = useRef(null);
     const toggleApp = (app) => {
@@ -88,7 +89,7 @@ const Dock = () => {
                         onClick={() => toggleApp(app)}
                     >
                         <img 
-                            src={`/images/${app.icon}`} 
+                            src={`${baseUrl}images/${app.icon}`} 
                             alt={app.name} 
                             loading='lazy'
                             className={app.canOpen ? '' : "opacity-60"}
